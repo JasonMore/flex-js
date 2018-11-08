@@ -540,6 +540,8 @@ Lexer.prototype.scan = function () {
 
     var rule = rules[index];
 
+    if(typeof rule !== 'object') continue;
+
     if (isEOF) {
       // skip non EOF rules
       if (rule.isEOF) {
@@ -685,10 +687,10 @@ Lexer.prototype.isRegExpMatchBOL = function(re) {
 
 /**
  * @private
- */
+*/
 Lexer.prototype.isRegExpMatchEOL = function(re) {
-  // primitive detection but in most cases it is more than enough
-  return re.source.substr(-1) === '$';
+    // primitive detection but in most cases it is more than enough
+    return re.source.substr(-1) === '$';
 }
 
 module.exports = Lexer;
